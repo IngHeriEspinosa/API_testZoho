@@ -1,0 +1,30 @@
+
+
+token Renovador:
+1000.f436d32224be048a3abe4146a620a794.dc7a0afb8306b834640254026a94eec3
+
+
+token Generador:
+
+{
+    "access_token": "1000.2c349c52132e3317052bc274897bb9a9.d97b390e2cecdd0d8370fe917e6e537d",
+    "refresh_token": "1000.9b8ac0d597c98b9a2fdd0eb527fcb097.a9d7ddb6e9b728375d7c7a7311db437e",
+    "api_domain": "https://www.zohoapis.com",
+    "token_type": "Bearer",
+    "expires_in": 3600
+}
+
+
+working token:
+
+duration: one hour.
+
+{
+    "access_token": "1000.6121fda843a6e313c5743087cfe5259b.b02246e75e4f7095751cca8653ddba53",
+    "api_domain": "https://www.zohoapis.com",
+    "token_type": "Bearer",
+    "expires_in": 3600
+}
+
+
+
