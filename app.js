@@ -7,19 +7,16 @@ const hpp = require('hpp');
 const managerTiketsRouter = require('./routes/managerTickets.routes');
 const globalErrorHandler = require('./controllers/error.controller');
 
+const app = express();
 
+app.use(helmet());
+app.use(express.json());
+app.use(cors());
+app.use(xss());
+app.use(hpp());
 
-const app = express()
+app.use('/api/v1/tickets', managerTiketsRouter);
 
-app.use(helmet())
-app.use(express.json())
-app.use(cors())
-app.use(xss())
-app.use(hpp())
+app.use(globalErrorHandler);
 
-
-app.use("/api/v1/tickets",managerTiketsRouter)
-
-app.use(globalErrorHandler)
-
-module.exports = app
+module.exports = app;

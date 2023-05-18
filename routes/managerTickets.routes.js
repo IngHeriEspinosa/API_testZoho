@@ -1,10 +1,13 @@
-const express = require("express");
+const express = require('express');
 
-const {findAllTikets} = require('../controllers/managerTickets.controllers');
+//MIDDLEWARES
+const { validToken } = require('../middlewares/token.middleware');
+
+//CONTROLLERS
+const { findAllTikets } = require('../controllers/managerTickets.controllers');
 
 const router = express.Router();
 
-router.get("/",findAllTikets)
+router.get('/', validToken, findAllTikets);
 
-
-module.exports = router
+module.exports = router;

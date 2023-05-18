@@ -1,20 +1,28 @@
 const axios = require('axios');
-const generateToken = require('../utils/generateTokenZoho');
 const catchAsync = require('../utils/catchAsync');
-const AppError = require('../utils/appError');
 
 exports.findAllTikets = catchAsync(async (req, res, next) => {
+    let token = req.token;
+    const url = 'https://www.zohoapis.com/crm/v2/Tasks';
+    let tickets;
 
-        const token = await generateToken();
+    token = token.split(' ')[0];
 
-        if(!token){
-            return new AppError('Ops!, authorization failed',401)
-        }
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };
 
-        req.headers.authorization = token
+    tickets = await axios
+        .get(url, config)
+        .then((res) => res.data)
+        .catch((err) => console.log(err.message));
 
-        res.status(200).json({
-            status: 'success',
-            token,
-        });
+    res.status(200).json({
+        status: 'success',
+        token,
+        results: tickets.data.length,
+        tickets,
+    });
 });
